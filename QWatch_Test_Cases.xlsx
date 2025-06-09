@@ -1,0 +1,16 @@
+Test Case ID	Module	Test Scenario	Test Steps	Expected Result
+QWT001	APK Decompilation	Decompile the QWatch APK using ApkTool	Run apktool d QWatch.apk -o qwatchmod	APK gets decompiled successfully
+QWT002	Resource Inspection	Inspect res/ and drawable/ folders	Open VS Code and explore layout & images	Preset layout and icons visible
+QWT003	Custom Image Inject	Replace preset wallpapers with custom ones	Place PNG images in drawable folders with same name	New wallpapers are bundled into the APK
+QWT004	XML Layout Preview	Preview custom wallpaper in fragment_watch_face_diy.xml	Edit layout file → link new drawable → save	Layout loads image from custom drawable
+QWT005	APK Rebuild	Rebuild the modified app	Run apktool b qwatchmod -o QWatchMod.apk	APK builds without errors
+QWT006	APK Signing	Sign the rebuilt APK	Use APKSigner or jarsigner	APK is signed and installable
+QWT007	Installation & Launch	Install app on emulator/device	Use adb install QWatchMod.apk or manual install	App installs and opens normally
+QWT008	Watch Face Screen	Open Watch Face settings page	Navigate to the screen with watch previews	Custom image is shown in place of preset
+QWT009	Functional Testing	Check if other app features work after modding	Sync, Health, Notifications, Profile	All features work like original
+QWT010	Stability Test	Use app for 10+ mins to check crashes	Interact with UI, rotate screen, background/foreground	App remains stable with no crashes
+QWT011	Preview Alignment	Ensure images are properly scaled	Observe custom image placement in preview	Image fits frame and doesn’t overflow
+QWT012	Fallback Handling	Check what happens if drawable image is missing	Remove one image file → rebuild & install	App either crashes or handles with placeholder
+QWT013	Settings Persistence	Set a custom face and restart app	Set face → close app → relaunch	Custom wallpaper setting is remembered
+QWT014	Performance Check	Launch speed and scroll responsiveness	Time initial load, scroll watchface preview	No significant lag or delay
+QWT015	Resolution Compatibility	Check image rendering on different screen sizes	Use emulator or physical device	Image scales correctly on small and large screens
